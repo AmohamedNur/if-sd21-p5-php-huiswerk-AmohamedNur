@@ -5,17 +5,17 @@ if(isset($_GET['uitrekenen'])) {
     if (!empty($_POST ['getal1']) && !empty($_POST['operator']) && !empty($_POST['getal2'])) {
 
         $getal1 = filter_input(INPUT_POST, 'getal1', FILTER_VALIDATE_FLOAT);
-        $operator = filter_input(INPUT_POST, 'operator');
         $getal2 = filter_input(INPUT_POST, 'getal2', FILTER_VALIDATE_FLOAT);
+        $operator = filter_input(INPUT_POST, 'operator');
     }
-    if ($operator == 'optellen') {
-        echo $getal1 + $getal2;
-    } else if ($operator == 'min') {
-        echo $getal1 - $getal2;
-    }else if ($operator == 'maal') {
-        echo $getal1 * $getal2;
-    } else if ($operator =='delen'){
-        echo $getal1 / $getal2;
+    if ($operator=='optellen') {
+         echo $ans=$getal1+$getal2;
+    } else if ($operator=='min') {
+        echo $ans=$getal1-$getal2;
+    }else if ($operator=='maal') {
+        echo $ans=$getal1*$getal2;
+    } else if ($operator=='delen'){
+        echo $ans=$getal1/$getal2;
 } else {
      echo "error";
     }
@@ -43,7 +43,7 @@ if(isset($_GET['uitrekenen'])) {
     <input id="getal2" type="text" name="getal2" value=""/>
     <br><br>
 
-    <input type="submit" name="uitrekenen" value="Bereknen">
+    <input type="submit" name="uitrekenen" value="Berekenen">
 </form>
 </body>
 </html>
