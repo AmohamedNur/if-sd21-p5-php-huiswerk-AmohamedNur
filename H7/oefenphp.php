@@ -1,17 +1,22 @@
 <?php
-if (isset($_POST ['inschrijven'])) {
-    $naam = $_POST['naam'];
-    $email = $_POST['email'];
-    $klas = $_POST['klas'];
+session_start();
+if (isset($_POST['submit'])){
+    if (empty($_POST ['naam']) && empty($_POST['mail']) && empty($_POST['klas'])) {
+        echo "Vul je gegevens in !";
+    }
+    if (empty($_POST['g'])){
+        echo "Vul een keuze in!";
+    }
+    if (empty($_POST['akkord'])){
+        echo "Ga akkord met de voorwaarden";
+    }
+    else{
+        $_SESSION ['naam']= $_POST['naam'];
+        $_SESSION ['mail']= $_POST['mail'];
+        $_SESSION ['klas']= $_POST['klas'];
+        $_SESSION ['g']= $_POST['g'];
 
-    if (!empty($_POST ['naam'])) {
-        echo "vul jouw naam in!";
-    }
-    if (!empty($_POST ['email']) && ) {
-        echo "vul jouw email in!";
-    }
-    if (!empty($_POST ['klas'])) {
-        echo "vul jouw klas in!";
+        header('location: extra.php');
     }
 }
 ?>
@@ -23,25 +28,18 @@ if (isset($_POST ['inschrijven'])) {
  <link rel="stylesheet" href="style.css">
  <body>
  <div class="form1">
-   <h1>Inschrijfformulier Werkshop</h1>
- <form method="post">
-     <label>Naam:</label>
-     <input type="text" name="naam">
-     <br>
-     <label>Email:</label>
-     <input type="text" name="email">
-     <br>
-     <label>Klas:</label>
-     <input type="text" name="klas">
-     <br>
-     <label>Workshop</label>
-     <br>
-     <input type="radio" name="workshop" value="drones"> Drones <br>
-     <input type="radio" name="workshop" value="Rasberry Pi"> Rasberry Pi <br>
-     <input type="radio" name="workshop" value="Security"> Security
-     <br><br>
-     <input type="checkbox" name="akkord" value="Akkord">Ik ga akkord met de voorwaarden
-     <br><br>
+ <form method="post" action="extra.php">
+     <h1>Inschrijfformulier Werkshop</h1>
+     Naam: <input type="text" name="naam"> <br> <br>
+     Email: <input type="text" name="mail"> <br> <br>
+     klas: <input type="text" name="klas"> <br> <br>
+
+     <p>Workshops</p>
+     <input name="g" type="radio"  value="Drones"/>Drones <br>
+     <input name="g" type="radio"  value="raspery Pi"/>Raspery Pi <br>
+     <input name="g" type="radio"  value="Security"/>Security <br> <br>
+     <input name="akkord" type="checkbox" value="accepteren"/> ik ga akkord met de voorwaarden <br> <br>
+
      <input type="submit" name="inschrijven" value="Inschrijven">
  </form>
  </div>
