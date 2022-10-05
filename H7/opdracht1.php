@@ -17,7 +17,7 @@
       <br><br>
 
 
-      <input type="submit" name="uitrekenen" value="Bereknen">
+       Don`t Look up
      </form>
   </body>
 </html>
