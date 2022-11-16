@@ -1,7 +1,7 @@
 <?php
-$db=new PDO("mysql:host=localhost;dbname=fiets",
+$db=new PDO("mysql:host=localhost;dbname=fietsenmaker",
          "root","");
-$query=$db->prepare("SELECT * FROM fietsen");
+$query=$db->prepare("SELECT * FROM fietsenmaker");
 $query->execute();
 $fietsen=$query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,9 +31,13 @@ echo "<td>prijs</td>";
 echo "</tr>";
 foreach ($fietsen as $fiet) {
     echo "<tr>";
+    echo "<td>" .$fiet['id']."</td>";
     echo "<td>" . $fiet['merk'] . "</td>";
-    echo "<td>" . $fiet['type'] . "</td>";
-    echo "<td>" . $fiet['prijs'] . "</td>";
+    echo "<td>" . $fiet['model'] . "</td>";
+    echo "<td>" . $fiet['price'] . "</td>";
+    echo "<td> <a href='detail.php?id=". $fiet['id'] . "'>details</a></td>";
+    echo "<td> <a href='update.php?id=". $fiet['id'] . "'>update</a></td>";
+    echo "<td> <a href='delete.php?id=". $fiet['id'] . "'>delete</a></td>";
     echo "</tr>";
 }
 echo "</table>";
