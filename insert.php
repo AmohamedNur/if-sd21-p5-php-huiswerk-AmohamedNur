@@ -6,14 +6,13 @@ try {
 
 if (isset($_POST['toevoegen'])){
     $leerling = filter_input(INPUT_POST, "leerling", FILTER_SANITIZE_STRING);
-    $VAK = filter_input(INPUT_POST, "leerling", FILTER_SANITIZE_STRING);
-    $leerling = filter_input(INPUT_POST, "leerling", FILTER_SANITIZE_STRING);
+    $vak = filter_input(INPUT_POST, "vak", FILTER_SANITIZE_STRING);
+    $cijfer = filter_input(INPUT_POST, "cijfer", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
-    if (empty($_POST ['leerling']) && empty($_POST['vak']) && empty($_POST['cijfer'])) {
+    if (empty($_POST ['leerling']) || empty($_POST['vak']) || empty($_POST['cijfer'])) {
         echo "Vul je gegevens in !";
-    }
-    if (empty($_POST['cijfer'])){
-        echo "Vul jou komma getal!";
+    } if ($cijfer <= 1 || $cijfer >= 10){
+        echo "vul correct cijfer";
     }
 
     else{
@@ -22,7 +21,7 @@ if (isset($_POST['toevoegen'])){
         $query->bindParam("vak", $vak);
         $query->bindParam("cijfer", $cijfer);
         $query->execute();
-        header('Location: datail.php');
+        header('Location:detail.php');
     }
 
  }
@@ -36,9 +35,9 @@ if (isset($_POST['toevoegen'])){
 </head>
 <body>
 <form method="post">
-    <h3>Niuewe Merken Toevoegen</h3>
+    <h3>Nieuwe Merken Toevoegen</h3>
     <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Leerlijn</label>
+        <label for="formGroupExampleInput" class="form-label">Leerling</label>
         <input type="text" name="leerling" class="form-control" id="formGroupExampleInput" value="">
     </div>
     <br>

@@ -35,8 +35,8 @@ foreach ($result as $data) {
     echo "<td>" . $data['leerling'] . "</td>";
     echo "<td>" . $data['vak'] . "</td>";
     echo "<td>" . $data['cijfer'] . "</td>";
-    echo "<td> <a href='update.php?id=". $data['id'] . "'>update</a></td>";
-    echo "<td> <a href='delete.php?id=". $data['id'] . "'>delete</a></td>";
+    echo "<td> <a href='update2.php?id=". $data['id'] . "'>update</a></td>";
+    echo "<td> <a href='delete2.php?id=". $data['id'] . "'>delete</a></td>";
     echo "</tr>";
 }
 echo "</table>";
