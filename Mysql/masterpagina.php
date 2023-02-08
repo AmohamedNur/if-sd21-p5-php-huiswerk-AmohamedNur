@@ -41,4 +41,4 @@ foreach ($fietsen as $fiet) {
     echo "</tr>";
 }
 echo "</table>";
-echo "<a href='../insert.php'>insert</a>";
+echo "<a href='../Crud/insert.php'>insert</a>";
